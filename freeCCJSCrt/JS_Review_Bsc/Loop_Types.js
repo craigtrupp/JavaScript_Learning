@@ -61,3 +61,34 @@ function multiplyAll(arr) {
   }
   
   multiplyAll([[1, 2], [3, 4], [5, 6, 7]]);
+
+
+// Do While - Change the while loop in the code to a do...while loop so the loop will push only the number 10 to myArray, and i will be equal to 11 when your code has finished running.
+  const doWhileArr = [];
+  let m = 10;
+  do {
+      doWhileArr.push(m)
+      m++;
+  } while (m < 11);
+
+
+//Write a recursive function, sum(arr, n), that returns the sum of the first n elements of an array arr.
+  function sum(arr, n) {
+    // Only change code below this line
+    if(n <= 0){
+      return 0;
+    } else {
+      return sum(arr, n - 1) + arr[n-1];
+    }
+    // Only change code above this line
+  }
+  console.log(sum([1], 0))
+  console.log(sum([2, 3, 4], 1))
+
+
+  // Math Flooor - generate Range
+  function randomRange(myMin, myMax) {
+    // Only change code below this line
+    return Math.floor(Math.random() * (myMax - myMin + 1) + myMin);
+    // Only change code above this line
+  }
