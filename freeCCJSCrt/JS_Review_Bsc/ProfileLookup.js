@@ -58,7 +58,7 @@ lookUpProfileLoop("Akira", "likes");
 function lookUpProfile(name, prop) {
     for (let i = 0; i < contacts.length; i++) {
         if (contacts[i].firstName === name) {
-        if (prop in contacts[i]) {
+            if (prop in contacts[i]) {
             return contacts[i][prop];
         } else {
             return "No such property";
