@@ -32,3 +32,33 @@ function freezeObj() {
     return MATH_CONSTANTS.PI;
   }
   const PI = freezeObj();
+
+
+// Anon Function (Concise - Old Example first to change)
+// var magic = function() {
+// return new Date();
+// };
+
+const magic = () => new Date();
+// console.log(magic()) - invoke
+// console.log(magic) [Function : functionname]
+
+
+// Write Arrow Functions with Parameters (Old Example first to change)
+// var myConcat = function(arr1, arr2) {
+//     return arr1.concat(arr2);
+//   };
+// console.log(myConcat([1, 2], [3, 4, 5]));
+
+const myConcat = (arr1, arr2) => arr1.concat(arr2);
+console.log(myConcat([1, 2], [3, 4, 5])); 
+
+
+
+//Use the Rest Parameter with Function Parameters
+const sum = (...args) => {
+    // const args = [x, y, z];
+    return args.reduce((a, b) => a + b, 0)
+  }
+  
+  console.log(sum(1,2,3))
