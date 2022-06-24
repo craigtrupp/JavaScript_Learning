@@ -43,4 +43,16 @@ let noNumRegex = /\D/g; // Change this line
 let result = movieName_deux.match(noNumRegex).length;
 
 
+// You need to check all the usernames in a database. Here are some simple rules that users have to follow when creating their username.
+// 1 ) Usernames can only use alpha-numeric characters.
+// 2 ) The only numbers in the username have to be at the end. There can be zero or more of them at the end. Username cannot start with the number. (Explicit start of alpha with either another alpha or at least two digits )
+// 3 ) Username letters can be lowercase and uppercase. (case flag at end of expression)
+// 4 ) Usernames have to be at least two characters long. A two-character username can only use alphabet letters as characters. (handled with first or conidition catching a second alpha and zero or more digits)
 
+let username = "JackOfAllTrades";
+let userCheck = /^[a-z]([a-z]+\d*|\d\d+)$/i; // Change this line
+let result_usrname = userCheck.test(username);
+
+// Condition Explanation below (default start of initial character being alpha and non numeric followed by two conditions separated with or operator)
+// ^ - start of input, [a-z] - first character is a letter then, firstCondition - alpha & numeric if found [a-z]+ = has one or more letters next and \d* none or more digits)
+// ^ - start of input, [a-z] - first character is a letter then, secondCondition - at least* two digits + more if used are allowed 
