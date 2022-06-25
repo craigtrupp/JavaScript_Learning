@@ -102,13 +102,33 @@ let result_smpnl = pwRegex.test(sampleWord);
 
 
 // Fix the regex so that it checks for the names of Franklin Roosevelt or Eleanor Roosevelt in a case sensitive manner and it should make concessions for middle names.
-// Then fix the code so that the regex that you have created is checked against myString and either true or false is returned depending on whether the regex matches.
+// Then fix the code so that the regex that you have created is checked against myString and either true or false is returned depending on whether the regex matches. : Mixed Grouping of Characters
 let myString_rosey = "Eleanor Roosevelt";
 let myRegex_rosey = /^(Franklin|Eleanor).*\sRoosevelt$/; // Change this line
 let result_rosey = myRegex_rosey.test(myString_rosey); // Change this line
-
-
 // start (^) with Franklin or Eleanor, followed by Zero or more repeating wildcard values (allows alot for middle names haha), a whitespace and ends with Roosevelt and a closing $ for ends as
 
 
+//Use capture groups in reRegex to match a string that consists of only the same number repeated exactly three times separated by single spaces. : Reuse Patterns Using Capture Groups
+let repeatNum = "42 42 42";
+let reRegex = /^(\d+)\s\1\s\1$/; // Change this line
+let result_rpnm = reRegex.test(repeatNum);
+// ^ with capture pattern (\d+) - 1 or more repeating digits
+// followed by whitespace, a repetion of the first capture group at the start of the string - numeric, whitespace, and closing capture group that ends the string 
+
+
+// Write a regex fixRegex using three capture groups that will search for each word in the string one two three. 
+// Then update the replaceText variable to replace one two three with the string three two one and assign the result to the result variable. 
+// Make sure you are utilizing capture groups in the replacement string using the dollar sign ($) syntax. : Use Capture Groups to Search and Replace
+let str_cprp = "one two three";
+let fixRegex_cprp = /([a-z]+)\s([a-z]+)\s([a-z]+)/; // Change this line - Could use \w+ to capture any word but passing a character set just to tst for fun
+let replaceText = "$3 $2 $1"; // Change this line
+let result_cprp = str.replace(fixRegex_cprp, replaceText);
+
+
+// Remove Whitespace from Start and End
+// Sometimes whitespace characters around strings are not wanted but are there. Typical processing of strings is to remove the whitespace at the start and end of it.
+let hello = "   Hello, World!  ";
+let wsRegex = /^(\s).\1$/; // Change this line
+let result_hsp = hello.replace(wsRegex, ''); // Change this line
 
