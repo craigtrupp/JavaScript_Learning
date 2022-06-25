@@ -54,5 +54,61 @@ let userCheck = /^[a-z]([a-z]+\d*|\d\d+)$/i; // Change this line
 let result_usrname = userCheck.test(username);
 
 // Condition Explanation below (default start of initial character being alpha and non numeric followed by two conditions separated with or operator)
-// ^ - start of input, [a-z] - first character is a letter then, firstCondition - alpha & numeric if found [a-z]+ = has one or more letters next and \d* none or more digits)
-// ^ - start of input, [a-z] - first character is a letter then, secondCondition - at least* two digits + more if used are allowed 
+// ^ - start of input, [a-z] - first character is a letter then, firstCondition - alpha & numeric if found [a-z]+ = has one or more letters next and \d* none or more digits) and end of expression for numeric or not $
+// ^ - start of input, [a-z] - first character is a letter then, secondCondition - at least* two digits + more if used are allowed) and end of expression for numeric or not $
+
+
+// Change the regex countWhiteSpace to look for multiple whitespace characters in a string. : Match Whitespace
+let sample_ws = "Whitespace is important in separating words";
+let countWhiteSpace = /\s/g; // Change this line
+let result_ws = sample.match(countWhiteSpace);
+
+
+// Change the regex countNonWhiteSpace to look for multiple non-whitespace characters in a string. : Match Non-Whitespace Characters 
+let sample_nws = "Whitespace is important in separating words";
+let countNonWhiteSpace = /\S/gi; // Change this line
+let result_nws = sample.match(countNonWhiteSpace);
+
+
+// Change the regex ohRegex to match the entire phrase "Oh no" only when it has 3 to 6 letter h's. : Specify Upper and Lower Number of Matches
+let ohStr = "Ohhh no";
+let ohRegex = /Oh{3,6}\sno/i; // Change this line (start of Oh string and count the characters allowed for h 3-6 followed by a whitespace and the end of the string "no" for the phrase "Oh no")
+let result_ohStr = ohRegex.test(ohStr);
+
+//console.log('Ohhhhhhh no'.match(/h/g).length) a way to count the length
+
+
+// Change the regex haRegex to match the word Hazzah only when it has four or more letter z's. : Specify Only the Lower Number of Matches
+let haStr = "Hazzzzah";
+let haRegex = /Haz{4,}ah/i; // Change this line
+let result_hazh = haRegex.test(haStr);
+
+
+// Change the regex timRegex to match the word Timber only when it has four letter m's. : Specify Exact Number of Matches 
+let timStr = "Timmmmber";
+let timRegex = /Tim{4}ber/; // Change this line
+let result_tmstr = timRegex.test(timStr);
+
+// Change the regex favRegex to match both the American English (favorite) and the British English (favourite) version of the word. : Check for All or None
+let favWord = "favorite";
+let favRegex = /favou?rite/i; // Change this line
+let result_fvwrd = favRegex.test(favWord);
+
+
+// Use lookaheads in the pwRegex to match passwords that are greater than 5 characters long, and have two consecutive digits. : Positive and Negative Lookahead
+let sampleWord = "astronaut";
+let pwRegex = /(?=\w{6,})(?=\w*\d{2,})/; // Change this line
+let result_smpnl = pwRegex.test(sampleWord);
+
+
+// Fix the regex so that it checks for the names of Franklin Roosevelt or Eleanor Roosevelt in a case sensitive manner and it should make concessions for middle names.
+// Then fix the code so that the regex that you have created is checked against myString and either true or false is returned depending on whether the regex matches.
+let myString_rosey = "Eleanor Roosevelt";
+let myRegex_rosey = /^(Franklin|Eleanor).*\sRoosevelt$/; // Change this line
+let result_rosey = myRegex_rosey.test(myString_rosey); // Change this line
+
+
+// start (^) with Franklin or Eleanor, followed by Zero or more repeating wildcard values (allows alot for middle names haha), a whitespace and ends with Roosevelt and a closing $ for ends as
+
+
+
