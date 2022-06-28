@@ -130,3 +130,23 @@ const makeServerRequest_then = new Promise((resolve, reject) => {
   makeServerRequest_then.then(result => {
     console.log(result);
   });
+
+  
+  const makeServerRequest_catch = new Promise((resolve, reject) => {
+    // responseFromServer is set to false to represent an unsuccessful response from a server
+    let responseFromServer_catch = false;
+      
+    if(responseFromServer_catch) {
+      resolve("We got the data");
+    } else {  
+      reject("Data not received");
+    }
+  });
+  
+  makeServerRequest_catch.then(result => {
+    console.log(result);
+  });
+  
+  makeServerRequest_catch.catch(error => {
+    console.log(error);
+  });

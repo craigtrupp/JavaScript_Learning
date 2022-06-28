@@ -129,6 +129,6 @@ let result_cprp = str.replace(fixRegex_cprp, replaceText);
 // Remove Whitespace from Start and End
 // Sometimes whitespace characters around strings are not wanted but are there. Typical processing of strings is to remove the whitespace at the start and end of it.
 let hello = "   Hello, World!  ";
-let wsRegex = /^(\s).\1$/; // Change this line
+let wsRegex = /^\s+|\s+$/g;  // Change this line - \s finds whitespace at beginning (^) of string 1 or more repeating times (+), or (|) the expression can find the same whitespace at the end of the string ($), /g matching multiple times to remove all of it
 let result_hsp = hello.replace(wsRegex, ''); // Change this line
 
