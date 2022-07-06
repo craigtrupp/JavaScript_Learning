@@ -70,4 +70,91 @@ function confirmEnding(str, target){
   return target_string == target ? true : false;
 }
 console.log(confirmEnding("Open sesame", "sage"))
-  
+
+
+//Truncate a string (first argument) if it is longer than the given maximum string length (second argument). Return the truncated string with a ... ending. : Truncate a String
+function truncateString(str, num) {
+  return str.length > num ? `${str.substring(0, num)}...`  : str;
+}
+
+
+// Boo who
+// Check if a value is classified as a boolean primitive. Return true or false. Boolean primitives are true and false. : Boo Who
+function booWho(bool) {
+  return typeof(bool) == 'boolean' ? true : false;
+}
+
+booWho(null);
+
+// Title Case a Sentence
+// Return the provided string with the first letter of each word capitalized. Make sure the rest of the word is in lower case.For the purpose of this exercise, you should also capitalize connecting words like the and of.
+
+function titleCase(str) {
+  let upperCaseEach = [];
+  let origStringSplit = str.split(" ");
+  for(let i = 0; i < origStringSplit.length; i++){
+    let firstTransform = origStringSplit[i][0].toUpperCase();
+    let restLower = origStringSplit[i].substring(1).toLowerCase();
+    upperCaseEach.push(`${firstTransform}${restLower}`);
+  }
+  return upperCaseEach.join(" ");
+}
+
+// You are given two arrays and an index. Copy each element of the first array into the second array, in order.
+// Begin inserting elements at index n of the second array. Return the resulting array. The input arrays should remain the same after the function runs.
+function frankenSplice(arr1, arr2, n) {
+  let combinedArray = arr2.slice();
+  combinedArray.splice(n, 0, ...arr1);
+  return combinedArray;
+}
+
+console.log(frankenSplice([1, 2, 3], [4, 5, 6], 1));
+
+
+// Falsy Bouncer : Remove all falsy values from an array.
+// Falsy values in JavaScript are false, null, 0, "", undefined, and NaN.
+// Falsy Values : In JavaScript, there are 6 falsy values. If you convert any of these to a boolean, it will return false. 
+// Falsy Values = [false, undefined, null, NaN, 0, ""] : https://www.samanthaming.com/tidbits/19-2-ways-to-convert-to-boolean/
+function bouncer(arr) {
+  let non_falsy = [];
+  for(let i = 0; i < arr.length; i++){
+    if(Boolean(arr[i]) == true){
+      non_falsy.push(arr[i])
+    }
+  }
+  return non_falsy;
+}
+
+bouncer([7, "ate", "", false, 9]);
+
+
+// Where do I Belong
+// Return the lowest index at which a value (second argument) should be inserted into an array (first argument) once it has been sorted. The returned value should be a number.
+
+// For example, getIndexToIns([1,2,3,4], 1.5) should return 1 because it is greater than 1 (index 0), but less than 2 (index 1).
+
+// Likewise, getIndexToIns([20,3,5], 19) should return 2 because once the array has been sorted it will look like [3,5,20] and 19 is less than 20 (index 2) and greater than 5 (index 1).
+function getIndexToIns(arr, num) {
+  arr.sort((a,b) => a - b);
+  console.log(arr);
+  for(let i = 0; i <= arr.length; i++){
+    if(num > arr[arr.length - 1]){
+      arr.push(num);
+      break;
+    } else if(arr[i] < num){
+      continue;
+    } 
+    arr.splice(i, 0, num);
+    break;
+  }
+  return arr.indexOf(num);
+}
+console.log(getIndexToIns([10, 20, 30, 40, 50], 35))
+console.log(getIndexToIns([40, 60], 50));
+console.log(getIndexToIns([3, 10, 5], 3));
+console.log(getIndexToIns([2, 5, 10], 15));
+console.log(getIndexToIns([], 1));
+
+console.log(getIndexToIns([40, 60], 50));
+console.log(getIndexToIns([3, 10, 5], 3));
+console.log(getIndexToIns([2, 5, 10], 15));
