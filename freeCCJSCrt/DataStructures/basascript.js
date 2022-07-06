@@ -205,3 +205,42 @@ console.log(mutation(["Mary", "Aarmy"]))
 console.log(mutation(["voodoo", "no"]))
 
 
+
+// Write a function that splits an array (first argument) into groups the length of size (second argument) and returns them as a two-dimensional array. : Chunky Monkey
+// set amount of nested arrays by first loop push empty array into OuterArray based on the length of the arr passed divided by the size (Ex : 9/4 = 2.3 - loop logic will create 3 arrays nested in outer array)
+function chunkArrayInGroups(arr, size) {
+  let outerArray = [];
+  let innerArrayCount = arr.length/size; // iterate through return to create arrays to push into outer array
+  for(let i = 0; i < innerArrayCount; i++){
+    outerArray.push([]);
+  }
+  // counter to determine how many array indexes to pass to nested array (j value in outer loop)
+  let sizeCounter = 0;
+  // start at outer loop for pushing arr values into correct nested array
+  for(let j = 0; j < outerArray.length; j++){
+    // start adding from passed array to function - using m to index 
+    for(let m = 0; m < arr.length; m++){
+      // push into outer array until the size counter hits the provided size from function call
+      if(sizeCounter < size){
+        outerArray[j].push(arr[m]);
+        sizeCounter++;
+      } // if provided size is hit, remove all items from provided array, reset the sizeCounter and break to outer loop to start adding to next nested index, splice provided array allows for m to not add duplicate values  
+      else if (sizeCounter == size) { 
+        arr.splice(0, size);
+        sizeCounter = 0;
+        break;
+      }
+    }
+  }
+  return outerArray;
+}
+
+console.log(chunkArrayInGroups(["a", "b", "c", "d"], 2)); // [['a', 'b'], ['c', 'd']]
+console.log(chunkArrayInGroups([0, 1, 2, 3, 4, 5], 3)); // [[0, 1, 2], [3, 4, 5]]
+console.log(chunkArrayInGroups([0, 1, 2, 3, 4, 5], 2)); // [[0, 1], [2, 3], [4, 5]]
+console.log(chunkArrayInGroups([0, 1, 2, 3, 4, 5], 4)); // [[0, 1, 2, 3], [4, 5]]
+console.log(chunkArrayInGroups([0, 1, 2, 3, 4, 5, 6], 3)); // [[0, 1, 2], [3, 4, 5], [6]]
+console.log(chunkArrayInGroups([0, 1, 2, 3, 4, 5, 6, 7, 8], 4)); // [[0, 1, 2, 3], [4, 5, 6, 7], [8]]
+console.log(chunkArrayInGroups([0, 1, 2, 3, 4, 5, 6, 7, 8], 2)); // [[0, 1], [2, 3], [4, 5], [6, 7], [8]]
+
+
