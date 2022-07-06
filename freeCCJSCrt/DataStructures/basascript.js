@@ -158,3 +158,50 @@ console.log(getIndexToIns([], 1));
 console.log(getIndexToIns([40, 60], 50));
 console.log(getIndexToIns([3, 10, 5], 3));
 console.log(getIndexToIns([2, 5, 10], 15));
+
+
+// Mutations
+// Return true if the string in the first element of the array contains all of the letters of the string in the second element of the array.
+
+// For example, ["hello", "Hello"], should return true because all of the letters in the second string are present in the first, ignoring case.
+
+// The arguments ["hello", "hey"] should return false because the string hello does not contain a y.
+
+// Lastly, ["Alien", "line"], should return true because all of the letters in line are present in Alien. 
+function mutation(arr) {
+  let secondStringArr = arr[1].toLowerCase().split("");
+  let checkCount = arr[1].length;
+  let secondStringGreaterCounter = 0; // second conditional check for longer strings passed in second argument which matches all in first element but has left over values
+  for(let i = 0 ; i < arr[0].length; i++){
+    let firstStringCharacter = arr[0][i].toLowerCase();
+    if(secondStringArr.indexOf(firstStringCharacter) != -1){
+      secondStringArr.splice(secondStringArr.indexOf(firstStringCharacter), 1);
+      secondStringGreaterCounter += 1;
+    }
+  }
+  if(secondStringArr.length == 0 || secondStringGreaterCounter == arr[0].length){
+    return true;
+  }
+  return false;
+}
+
+function mutation_correct(arr) {
+  let firstStringArr = arr[0].toLowerCase().split("");
+  let secondStringArr = arr[1].toLowerCase().split("");
+  console.log(firstStringArr, secondStringArr)
+  for(let i = 0; i < arr[1].length; i++){
+    let checkStringValue = arr[1][i].toLowerCase();
+    if(firstStringArr.indexOf(checkStringValue) >= 0){
+      secondStringArr.shift();
+    }
+  }
+  return secondStringArr.length == 0 ? true : false
+}
+
+console.log(mutation(["helloy", "hey"]));
+console.log(mutation(["hello", "Hello"]));
+console.log(mutation(["hello", "Helllo"]));
+console.log(mutation(["Mary", "Aarmy"]))
+console.log(mutation(["voodoo", "no"]))
+
+
