@@ -4,6 +4,8 @@
 // Note that the rating values are saved as strings in the object and you may need to convert them into numbers to perform mathematical operations on them.
 // Use the filter Method to Extract Data from an Array
 // The global variable 
+
+// The global variable
 const watchList = [
     {
       "Title": "Inception",
@@ -117,9 +119,14 @@ const watchList = [
     }
   ];
   
-// Only change code below this line : combination needed as filter can't slice or pick only particular elements but chaining map method allows for destructuring
-const filteredList = watchList
-  .filter(element => element.imdbRating >= 8.0)
-  .map(({Title:title, imdbRating:rating}) => ({title, rating}));
-// Only change code above this line
-console.log(filteredList);
+  function getRating(watchList) {
+    // Only change code below this line
+    let averageRating = watchList
+      .filter(element => element.Director == 'Christopher Nolan')
+      .map(element => parseFloat(element.imdbRating))
+      .reduce((acc, rating, index, a) => (acc + rating / a.length),0);
+    // Only change code above this line
+    return averageRating;
+  }
+  
+  console.log(getRating(watchList));
