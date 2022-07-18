@@ -28,3 +28,4 @@ function nonMutatingSort(arr) {
 }
 
 nonMutatingSort(globalArray);
+// Output : [ 2, 3, 5, 6, 9 ]
