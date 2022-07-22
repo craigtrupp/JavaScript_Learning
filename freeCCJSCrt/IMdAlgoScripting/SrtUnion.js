@@ -37,6 +37,8 @@ function uniteUnique(...arr) {
   const uniteUnique = (...arr) => [...new Set(arr.flat())];
 
 
+// nifty filter here from a user solution, flattens array into one array from all sub-array elements, for the filter itemd for each element, 
+// the arr being built (passed in filter) is being searched with an indexOf (returning first index of item if found in array) and being filtered only if that item is equal to the current index (filters out any dupes)
 function uniteUnique() {
 return [...arguments]
     .flat()
