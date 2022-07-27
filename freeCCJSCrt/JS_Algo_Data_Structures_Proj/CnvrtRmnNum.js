@@ -50,9 +50,19 @@ function convertToRoman(num) {
      while(rom_num['numerals'].length < 1 || running_sum() != num_provided){
        findLowest(rom_num['seq'][0]);
      }
-     return [rom_num, running_sum()];
+     return [rom_num, running_sum(), rom_num['numerals'].join("")];
 }
 console.log(convertToRoman(4)); //[ { sum: [ 0, 4 ], numerals: [ 'IV' ], seq: [ 4 ] }, 4 ]
 console.log(convertToRoman(2)); // [ { sum: [ 0, 1, 1 ], numerals: [ 'I', 'I' ], seq: [ 0, 1, 2 ] }, 2 ]
 console.log(convertToRoman(7)); // [ { sum: [ 0, 5, 1, 1 ], numerals: [ 'V', 'I', 'I' ], seq: [ 0, 1, 2, 7 ] }, 7]
 console.log(convertToRoman(12)); // [ { sum: [ 0, 10, 1, 1 ], numerals: [ 'X', 'I', 'I' ], seq: [ 0, 1, 2, 12 ] }, 12]
+console.log(convertToRoman(68));
+console.log(convertToRoman(798));
+// [ { sum: [ 0, 50, 10, 5, 1, 1, 1 ],
+//     numerals: [ 'L', 'X', 'V', 'I', 'I', 'I' ],
+//     seq: [ 0, 1, 2, 3, 8, 18, 68 ] },
+//   68 ]
+// [ { sum: [ 0, 500, 100, 100, 90, 5, 1, 1, 1 ],
+//     numerals: [ 'D', 'C', 'C', 'XC', 'V', 'I', 'I', 'I' ],
+//     seq: [ 0, 1, 2, 3, 8, 98, 198, 298, 798 ] },
+//   798 ]
