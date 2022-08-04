@@ -39,16 +39,41 @@
 function checkCashRegister(price, cash, cid) {
     let currency_values= {'PENNY': 1, 'NICKEL':5, 'DIME': 10, 'QUARTER':25, 'ONE':100, 'FIVE':500, 'TEN':1000, 'TWENTY':2000, 'ONE HUNDRED':10000}
     // Floats are the worst ... let's not deal with them
-    let difference = (cash * 100) - (price * 100);
+    let diffSum = (cash * 100) - (price * 100);
+    let change = [];
+    let status = '';
+    let chngSumCheck = diffSum;
     // this value will be set after the forEach runs below to calculate total sum of all actual cash in Drawer (3rd) argument
     let cidSum = 0;
     // make sure CID is available for all 2D  "nickel" .. etc type elements, else filter out currency 'key'
-    let actualCID = cid.forEach(element => element[1] != 0).reverse();
+    let actualCID = cid.filter(element => element[1] !== 0).reverse();
+    
     actualCID.forEach(element => {
         let currency = element[0];
         let currencySum = element[1] * 100;
         cidSum += currencySum;
+        // element[1] = element[1] * 100; would put cid elements in same scale as other currency values
+        let amount = 0;
+        while(diffSum >= currency_values[currency] && currencySum > 0){
+            amount += currency_values[currency];
+            diffSum -= currency_values[currency];
+            currencySum -= currency_values[currency];
+        }
+        if(amount !== 0){
+            change.push([currency, amount / 100]);
+        }
     });
+    //return [actualCID, cidSum, difference];
+    if(diffSum > 0){
+        status = 'INSUFFICIENT_FUNDS';
+        change = [];
+    } else if (diffSum == 0 && chngSumCheck == cidSum){
+        status = 'CLOSED';
+        change = cid;
+    } else {
+        status = 'OPEN';
+    }
+    return {'status' : status, change : change}
   }
   
   
